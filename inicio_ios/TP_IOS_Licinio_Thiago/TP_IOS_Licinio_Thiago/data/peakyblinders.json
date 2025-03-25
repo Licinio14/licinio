@@ -1,0 +1,31 @@
+[
+	{
+		"id": 1,
+		"name": "Tarefa 1",
+        "description": "Acabar o trabalho de IOS",
+        "category": "Programação",
+		"image": "Image(systemName: "greaterthanorequalto")"
+	},
+    {
+        "id": 2,
+        "name": "Tarefa 2",
+        "description": "Fazer um novo site em laravel",
+        "category": "Programação",
+        "image": "Image(systemName: "greaterthanorequalto")"
+    },
+    {
+        "id": 3,
+        "name": "Tarefa 3",
+        "description": "Desenhar o logo",
+        "category": "Desenho",
+        "image": "Image(systemName: "pencil.line")"
+    },
+    {
+        "id": 4,
+        "name": "Tarefa 4",
+        "description": "Testar os programas",
+        "category": "Teste",
+        "image": "Image(systemName: "repeat.circle.fill")"
+    },
+    
+]
