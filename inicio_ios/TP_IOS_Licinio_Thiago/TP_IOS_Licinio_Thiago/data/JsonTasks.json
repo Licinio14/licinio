@@ -3,57 +3,57 @@
 		"id": 0,
 		"name": "Tarefa 1",
         "description": "Acabar o trabalho de IOS",
-        "category": 0,
-		"image": 0
+        "category": 1,
+		"image": 1
 	},
     {
         "id": 1,
         "name": "Tarefa 2",
         "description": "Fazer um novo site em laravel",
-        "category": 0,
-        "image": 0
+        "category": 1,
+        "image": 1
     },
     {
         "id": 2,
         "name": "Tarefa 3",
         "description": "Desenhar o logo",
-        "category": 4,
-        "image": 1
+        "category": 5,
+        "image": 2
     },
     {
         "id": 3,
         "name": "Tarefa 4",
         "description": "Testar os programas",
-        "category": 3,
-        "image": 2
+        "category": 4,
+        "image": 3
     },
     {
         "id": 4,
         "name": "Tarefa 1",
         "description": "Acabar o trabalho de IOS",
-        "category": 3,
-        "image": 0
+        "category": 4,
+        "image": 1
     },
     {
         "id": 5,
         "name": "Tarefa 2",
         "description": "Fazer um novo site em laravel",
-        "category": 1,
-        "image": 0
+        "category": 2,
+        "image": 1
     },
     {
         "id": 6,
         "name": "Tarefa 3",
         "description": "Desenhar o logo",
-        "category": 0,
-        "image": 1
+        "category": 1,
+        "image": 2
     },
     {
         "id": 7,
         "name": "Tarefa 4",
         "description": "Testar os programas",
-        "category": 2,
-        "image": 2
+        "category": 3,
+        "image": 3
     }
     
 ]

@@ -1,27 +1,27 @@
 [
     {
         "id": 0,
-        "name": "greaterthanorequalto"
+        "name": "select"
     },
     {
         "id": 1,
-        "name": "pencil.line"
+        "name": "greaterthanorequalto"
     },
     {
         "id": 2,
-        "name": "repeat"
+        "name": "pencil.line"
     },
     {
         "id": 3,
-        "name": "plus"
+        "name": "repeat"
     },
     {
         "id": 4,
-        "name": "dryer"
+        "name": "plus"
     },
     {
         "id": 5,
-        "name": ""
+        "name": "dryer"
     },
     {
         "id": 6,
@@ -42,5 +42,5 @@
     {
         "id": 10,
         "name": ""
-    },
+    }
 ]

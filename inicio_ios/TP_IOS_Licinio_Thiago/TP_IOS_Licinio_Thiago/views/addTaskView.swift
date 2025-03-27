@@ -14,8 +14,10 @@ struct addTaskView: View {
     @Binding var taskList: [Task]
     @Binding var addClicked: Bool
     
-    @State var selectedCat: Int = 1
-    @State var selectedImg: Int = 1
+    @State var selectedCat: Int = 0
+    @State var selectedImg: Int = 0
+    
+    @State private var showAlert = false
     
     @State var name: String = ""
     @State var description: String = ""
@@ -66,15 +68,18 @@ struct addTaskView: View {
             
             Button {
                 
-                if (name.isEmpty || description.isEmpty){
+                if (name.isEmpty || description.isEmpty || selectedCat == 0 || selectedImg == 0){
+                    showAlert = true
+                }else {
+                    let newTask = Task(id: taskList.endIndex,name: name, description: description,category: selectedCat, image: selectedImg)
+                    taskList.append(newTask)
+                    print(taskList)
                     
+                    addClicked.toggle()
                 }
                 
-                let newTask = Task(id: taskList.endIndex,name: name, description: description,category: selectedCat, image: selectedImg)
-                taskList.append(newTask)
-                print(taskList)
                 
-                addClicked.toggle()
+                
                 
                 
             }label: {
@@ -86,6 +91,13 @@ struct addTaskView: View {
                     .background(.blue)
                     .cornerRadius(20)
                     
+            }.alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Alert"),
+                    message: Text("All fields are required!"),
+                    dismissButton: .default(Text("Ok"))
+                    
+                )
             }
         }.preferredColorScheme(.dark)
         

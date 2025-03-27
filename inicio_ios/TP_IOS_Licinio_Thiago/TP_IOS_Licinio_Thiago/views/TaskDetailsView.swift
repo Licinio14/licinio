@@ -14,78 +14,137 @@ struct TaskDetailsView: View {
     @Binding var imgList: [Img]
     @Binding var taskList: [Task]
     
+    @Environment(\.presentationMode) var presentationMode
+    
     let task : Task
     
-
     @State var name : String = ""
-    @State var category : String = ""
+    @State var category : Int = 0
     @State var description : String = ""
-    
+    @State var img : Int = 0
+
     var body: some View {
+        
         
         VStack(alignment: .center) {
             
-            HStack {
-                Image(systemName: "\(imgList[task.image].name)")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 25)
-                    .shadow(color: .white, radius: 1)
-                    .padding(.leading,40)
+            VStack {
                 
-                TextField(task.name, text: $name)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding()
+                HStack {
+                    
+                    Image(systemName: "\(imgList[img].name)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .shadow(color: .white, radius: 1)
+                    
+                    Picker("Image", selection: $img) {
+                        ForEach(imgList) { img in
+                            Text(img.name)
+                                .tag(img.id)
+                                        }
+                                }
+                                .pickerStyle(.wheel)  // Estilo de apresentação do Picker (pode ser alterado para .wheel, .segmented, etc.)
+                                .cornerRadius(8)
+                                .frame(width: 200, height: 100)
+                    
+                    
+                    
+                }
+                
+                HStack {
+                    Text("Task Name:")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.leading,40)
+                    
+                    TextField("Task name", text: $name)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.gray)
+                }
+                
+                
             }
             
             HStack {
+
+                
                 Text("Category: ")
-                    .font(.title2)
+                    .font(.title)
                     .fontWeight(.bold)
                     .padding(.leading,40)
                 
-                TextField(catList[task.category].name, text: $category)
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding()
+                Spacer()
                 
-            }.padding(.top, 30)
+                Picker("Category", selection: $category) {
+                    ForEach(catList) { cat in
+                        Text(cat.name)
+                            .tag(cat.id)
+                                    }
+                            }
+                            .pickerStyle(.menu)  // Estilo de apresentação do Picker (pode ser alterado para .wheel, .segmented, etc.)
+                            .padding()
+                            .cornerRadius(8)
+                            
+
+            }.padding(.trailing,40)
             
-            TextField(task.description, text: $description)
-                .fontWeight(.bold)
-                .padding(.top, 10)
-                .padding(.leading,40)
+            VStack {
+                Text("Description: ")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .padding(.leading,40)
+                
+                TextEditor(text: $description)
+                    .padding()
+                    .foregroundColor(.gray)
+                    .border(Color.gray, width: 1)
+                    .frame(height: 200)
+                
+            }.padding()
+            
+            
+            
             
             HStack {
                 Button{
                     taskList.removeAll { removeTask in
                         removeTask.id == task.id
                     }
+                    
+                    presentationMode.wrappedValue.dismiss()
                 }label: {
-                    Text("Delet Task")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .padding(15)
-                        .background(.blue)
-                        .cornerRadius(20)
-                        
-                }
+                    
+                    Image(systemName: "eraser.line.dashed")
+                    Text("Delete")
+                    
+                }.font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+                .frame(width: 150, height: 70)
+                .background(.white)
+                .cornerRadius(20)
                 
                 Button{
                     
                 }label: {
-                    Text("Update Task")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .padding(15)
-                        .background(.blue)
-                        .cornerRadius(20)
-                        
-                }
+                    Image(systemName: "pencil")
+                    Text("Update")
+                }.font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+                .frame(width: 150, height: 70)
+                .background(.white)
+                .cornerRadius(20)
+                
             }.padding(.top,50)
+        }.onAppear {
+            // Inicializa o valor da variável @State quando a View aparecer
+            name = task.name
+            category = task.category
+            img = task.image
+            description = task.description
         }
         
         

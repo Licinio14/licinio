@@ -17,6 +17,8 @@ struct ContentView: View {
     
     @State var addClicked = false
     
+    @State private var showAlertDeleteAll = false
+    
     var body: some View {
         ZStack{
             
@@ -60,37 +62,71 @@ struct ContentView: View {
                         
                         
                     }.navigationTitle("ToDo List")
+                    .toolbar {
+                        // Adiciona o ícone na parte da direita da Navigation Bar
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Image(systemName: "list.bullet.clipboard")  // SF Symbol como ícone
+                                .foregroundColor(.white) // Altere a cor do ícone
+                                .padding()
+                        }
+                    }
                         
                 }
+
                 
                 //btts
                 
                     HStack {
+                        
+                        Spacer()
+                        Spacer()
                         Button {
                             addClicked.toggle()
                         }label: {
-                            Text("Add")
-                                .font(.title)
+                            Image(systemName: "plus.circle")
+                                .resizable()
+                                .frame(width: 40,height: 40)
+                                .foregroundColor(.green)
                                 .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .padding(15)
-                                .background(.blue)
-                                .cornerRadius(20)
                                 
                         }
+                        
+                        Spacer()
 
                         Button {
                             
                         }label: {
-                            Text("About Us")
-                                .font(.title)
+                            Image(systemName: "info.circle")
+                                .resizable()
+                                .frame(width: 40,height: 40)
+                                .foregroundColor(.blue)
                                 .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .padding(15)
-                                .background(.blue)
-                                .cornerRadius(20)
                                 
                         }
+                        
+                        Spacer()
+                        
+                        Button {
+                            showAlertDeleteAll = true
+                        }label: {
+                            Image(systemName: "trash.circle")
+                                .resizable()
+                                .frame(width: 40,height: 40)
+                                .foregroundColor(.red)
+                                .fontWeight(.bold)
+                        }.alert(isPresented: $showAlertDeleteAll) {
+                            Alert(
+                                title: Text("Alert"),
+                                message: Text("You really want to delete all tasks?"),
+                                primaryButton: .destructive(Text("Confirmar")) {
+                                    taskList.removeAll()
+                                },
+                                secondaryButton: .cancel()
+                            )
+                        }
+                        
+                        Spacer()
+                        Spacer()
                     }.padding(.top,20)
 
                 
