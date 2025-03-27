@@ -9,24 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let taskList = TaskList().allTasks
-    let imgList = ImgList().allImgs
-    let catList = CategoryList().allcats
+    
+
+    @State var taskList = TaskList().allTasks
+    @State var imgList = ImgList().allImgs
+    @State var catList = CategoryList().allcats
     
     @State var addClicked = false
     
     var body: some View {
         ZStack{
             
+            
+            
             //content
             VStack{
+                
                 
                 //task list
                 NavigationStack {
                     List(taskList) { task in
                         
                         NavigationLink {
-                            TaskDetailsView(task: task)
+                            TaskDetailsView(catList: $catList, imgList: $imgList, taskList: $taskList,task: task)
                         }label: {
                             HStack {
                                 Image(systemName: "\(imgList[task.image].name)")
@@ -93,7 +98,7 @@ struct ContentView: View {
             }
         }.preferredColorScheme(.dark)
             .sheet(isPresented: $addClicked){
-                addTaskView()
+                addTaskView(catList: $catList, imgList: $imgList, taskList: $taskList, addClicked: $addClicked)
             }
     }
 }

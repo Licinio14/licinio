@@ -20,7 +20,7 @@ class ImgList{
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 allImgs = try decoder.decode([Img].self, from: data)
-                print(allImgs.count)
+                //print(allImgs.count)
             }catch {
                 print("Erro while decoding JSON")
             }

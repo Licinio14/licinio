@@ -20,7 +20,7 @@ class CategoryList{
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 allcats = try decoder.decode([Category].self, from: data)
-                print(allcats.count)
+                //print(allcats.count)
             }catch {
                 print("Erro while decoding JSON")
             }

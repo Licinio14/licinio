@@ -9,11 +9,14 @@ import SwiftUI
 
 struct TaskDetailsView: View {
     
+    
+    @Binding var catList: [Category]
+    @Binding var imgList: [Img]
+    @Binding var taskList: [Task]
+    
     let task : Task
     
-    let imgList = ImgList().allImgs
-    let catList = CategoryList().allcats
-    
+
     @State var name : String = ""
     @State var category : String = ""
     @State var description : String = ""
@@ -56,7 +59,9 @@ struct TaskDetailsView: View {
             
             HStack {
                 Button{
-                    
+                    taskList.removeAll { removeTask in
+                        removeTask.id == task.id
+                    }
                 }label: {
                     Text("Delet Task")
                         .font(.title)
@@ -89,7 +94,12 @@ struct TaskDetailsView: View {
 }
 
 #Preview {
-    TaskDetailsView(task: TaskList().allTasks[0])
+    
+    @State var taskList = TaskList().allTasks
+    @State var imgList = ImgList().allImgs
+    @State var catList = CategoryList().allcats
+    
+    TaskDetailsView(catList: $catList, imgList: $imgList, taskList: $taskList, task: TaskList().allTasks[0])
         .preferredColorScheme(.dark)
         
 }

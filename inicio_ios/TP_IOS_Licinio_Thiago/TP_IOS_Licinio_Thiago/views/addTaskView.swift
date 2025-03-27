@@ -9,9 +9,10 @@ import SwiftUI
 
 struct addTaskView: View {
     
-    let catList = CategoryList().allcats
-    let imgList = ImgList().allImgs
-    let taskList = TaskList().allTasks
+    @Binding var catList: [Category]
+    @Binding var imgList: [Img]
+    @Binding var taskList: [Task]
+    @Binding var addClicked: Bool
     
     @State var selectedCat: Int = 1
     @State var selectedImg: Int = 1
@@ -64,8 +65,16 @@ struct addTaskView: View {
             
             
             Button {
-                var newTask = Task(id: taskList.endIndex,name: name, description: description,category: selectedCat, image: selectedImg)
-                TaskList().allTasks.append(newTask)
+                
+                if (name.isEmpty || description.isEmpty){
+                    
+                }
+                
+                let newTask = Task(id: taskList.endIndex,name: name, description: description,category: selectedCat, image: selectedImg)
+                taskList.append(newTask)
+                print(taskList)
+                
+                addClicked.toggle()
                 
                 
             }label: {
@@ -86,5 +95,13 @@ struct addTaskView: View {
 }
 
 #Preview {
-    addTaskView()
+    
+    @State var taskList = TaskList().allTasks
+    @State var imgList = ImgList().allImgs
+    @State var catList = CategoryList().allcats
+    @State var addClicked = true
+    
+    addTaskView(catList: $catList, imgList: $imgList, taskList: $taskList, addClicked: $addClicked)
+    
+
 }

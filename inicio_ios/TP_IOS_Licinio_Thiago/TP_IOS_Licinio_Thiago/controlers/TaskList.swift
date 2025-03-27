@@ -14,6 +14,10 @@ class TaskList{
         decodeJSONData()
     }
     
+    public func getAllTasks() -> [Task]{
+        return allTasks
+    }
+    
     private func decodeJSONData(){
         if let url = Bundle.main.url(forResource: "JsonTasks", withExtension: "json") {
             do{
@@ -21,7 +25,7 @@ class TaskList{
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 allTasks = try decoder.decode([Task].self, from: data)
-                print(allTasks.count)
+                print("Leu do ficheiro: \(allTasks.count)")
             }catch {
                 print("Erro while decoding JSON")
             }
