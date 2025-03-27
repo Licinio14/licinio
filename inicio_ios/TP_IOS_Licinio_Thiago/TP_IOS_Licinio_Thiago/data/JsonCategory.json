@@ -5,23 +5,43 @@
     },
     {
         "id": 1,
-        "name": "cat 2"
+        "name": "Cardio"
     },
     {
         "id": 2,
-        "name": "cat 3"
+        "name": "Força"
     },
     {
         "id": 3,
-        "name": "cat 4"
+        "name": "Alongamentos"
     },
     {
         "id": 4,
-        "name": "cat 5"
+        "name": "Yoga"
     },
     {
         "id": 5,
-        "name": "cat 5"
+        "name": "HIIT"
+    },
+    {
+        "id": 6,
+        "name": "Funcional"
+    },
+    {
+        "id": 7,
+        "name": "Pilates"
+    },
+    {
+        "id": 8,
+        "name": "Treino de Resistência"
+    },
+    {
+        "id": 9,
+        "name": "Esportes"
+    },
+    {
+        "id": 10,
+        "name": "Treino em Casa"
     }
     
 ]

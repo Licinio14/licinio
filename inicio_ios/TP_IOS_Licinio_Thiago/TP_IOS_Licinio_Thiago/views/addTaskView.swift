@@ -13,9 +13,10 @@ struct addTaskView: View {
     @Binding var imgList: [Img]
     @Binding var taskList: [Task]
     @Binding var addClicked: Bool
+    @Binding var isDarkMode: Bool
     
     @State var selectedCat: Int = 0
-    @State var selectedImg: Int = 0
+    @State var selectedImg: Int = 3
     
     @State private var showAlert = false
     
@@ -27,6 +28,8 @@ struct addTaskView: View {
         VStack {
             Form {
                 TextField("Name", text: $name )
+                    .foregroundColor(.accent)
+                
                 Picker("Category", selection: $selectedCat) {
                     ForEach(catList) { cat in
                         Text(cat.name)
@@ -35,10 +38,10 @@ struct addTaskView: View {
                             }
                             .pickerStyle(.menu)  // Estilo de apresentação do Picker (pode ser alterado para .wheel, .segmented, etc.)
                             .padding()
-                            .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
                 
                 TextField("Description", text: $description )
+                    .foregroundColor(.accent)
                 
 
                 Picker("Image", selection: $selectedImg) {
@@ -49,16 +52,15 @@ struct addTaskView: View {
                             }
                             .pickerStyle(.menu)  // Estilo de apresentação do Picker (pode ser alterado para .wheel, .segmented, etc.)
                             .padding()
-                            .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
                 
-                Image(systemName: "\(imgList[selectedImg].name)")
+                Image(imgList[selectedImg].name)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 300)
-                    .shadow(color: .black, radius: 1)
+                    .cornerRadius(20)
                     .padding(10)
-                    .foregroundColor(.black)
+                    .shadow(color: .accent, radius: 5)
                 
                 
 
@@ -84,14 +86,15 @@ struct addTaskView: View {
                 
             }label: {
                 Text("ADD")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .padding(15)
-                    .background(.blue)
-                    .cornerRadius(20)
                     
-            }.alert(isPresented: $showAlert) {
+                    
+            }.font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.accentColorText)
+                .frame(width: 150, height: 70)
+                .background(.accent)
+                .cornerRadius(20)
+                .alert(isPresented: $showAlert) {
                 Alert(
                     title: Text("Alert"),
                     message: Text("All fields are required!"),
@@ -99,7 +102,7 @@ struct addTaskView: View {
                     
                 )
             }
-        }.preferredColorScheme(.dark)
+        }.preferredColorScheme(isDarkMode ? .dark : .light)
         
         
         
@@ -112,8 +115,9 @@ struct addTaskView: View {
     @State var imgList = ImgList().allImgs
     @State var catList = CategoryList().allcats
     @State var addClicked = true
+    @State var isDarkMode = false
     
-    addTaskView(catList: $catList, imgList: $imgList, taskList: $taskList, addClicked: $addClicked)
+    addTaskView(catList: $catList, imgList: $imgList, taskList: $taskList, addClicked: $addClicked,isDarkMode: $isDarkMode)
     
 
 }

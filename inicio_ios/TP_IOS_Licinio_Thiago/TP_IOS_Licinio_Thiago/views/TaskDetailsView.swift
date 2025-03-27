@@ -22,6 +22,9 @@ struct TaskDetailsView: View {
     @State var category : Int = 0
     @State var description : String = ""
     @State var img : Int = 0
+    
+    @State private var showAlert = false
+    @State private var showAlertDelete = false
 
     var body: some View {
         
@@ -32,11 +35,12 @@ struct TaskDetailsView: View {
                 
                 HStack {
                     
-                    Image(systemName: "\(imgList[img].name)")
+                    Image(imgList[img].name)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 50, height: 50)
-                        .shadow(color: .white, radius: 1)
+                        .frame(width: 100, height: 100)
+                        .cornerRadius(20)
+                        .shadow(color: .accentColor, radius: 5)
                     
                     Picker("Image", selection: $img) {
                         ForEach(imgList) { img in
@@ -109,11 +113,9 @@ struct TaskDetailsView: View {
             
             HStack {
                 Button{
-                    taskList.removeAll { removeTask in
-                        removeTask.id == task.id
-                    }
                     
-                    presentationMode.wrappedValue.dismiss()
+                    showAlertDelete = true
+                    
                 }label: {
                     
                     Image(systemName: "eraser.line.dashed")
@@ -121,22 +123,64 @@ struct TaskDetailsView: View {
                     
                 }.font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(.black)
+                .foregroundColor(.accentColorText)
                 .frame(width: 150, height: 70)
-                .background(.white)
+                .background(.accent)
                 .cornerRadius(20)
+                .alert(isPresented: $showAlertDelete) {
+                    Alert(
+                        title: Text("Alert"),
+                        message: Text("All fields are required!"),
+                        primaryButton: .destructive(Text("Confirmar")) {
+                            taskList.removeAll { removeTask in
+                                removeTask.id == task.id
+                            }
+                            
+                            presentationMode.wrappedValue.dismiss()
+                        },
+                        secondaryButton: .cancel()
+                        
+                    )
+                }
                 
                 Button{
+                    
+                    if !name.isEmpty && !description.isEmpty && img != 0 && category != 0 {
+                        let index = taskList.firstIndex(where: { taskIndex in
+                            taskIndex.id == task.id
+                        })!
+                        
+                        let newTask = Task(id: task.id,name: name, description: description,category: category, image: img)
+                        
+                        
+                        taskList.remove(at: index)
+                        
+                        taskList.insert(newTask, at: index)
+                        
+                        presentationMode.wrappedValue.dismiss()
+
+                        
+                    }else {
+                        showAlert = true
+                    }
                     
                 }label: {
                     Image(systemName: "pencil")
                     Text("Update")
                 }.font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(.black)
+                .foregroundColor(.accentColorText)
                 .frame(width: 150, height: 70)
-                .background(.white)
+                .background(.accent)
                 .cornerRadius(20)
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Alert"),
+                        message: Text("All fields are required!"),
+                        dismissButton: .default(Text("Ok"))
+                        
+                    )
+                }
                 
             }.padding(.top,50)
         }.onAppear {
@@ -159,6 +203,5 @@ struct TaskDetailsView: View {
     @State var catList = CategoryList().allcats
     
     TaskDetailsView(catList: $catList, imgList: $imgList, taskList: $taskList, task: TaskList().allTasks[0])
-        .preferredColorScheme(.dark)
         
 }

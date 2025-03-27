@@ -16,10 +16,14 @@ struct ContentView: View {
     @State var catList = CategoryList().allcats
     
     @State var addClicked = false
+    @State var showAboutUS = false
+    @State var isDarkMode = false
     
     @State private var showAlertDeleteAll = false
     
     var body: some View {
+        
+
         ZStack{
             
             
@@ -36,14 +40,15 @@ struct ContentView: View {
                             TaskDetailsView(catList: $catList, imgList: $imgList, taskList: $taskList,task: task)
                         }label: {
                             HStack {
-                                Image(systemName: "\(imgList[task.image].name)")
+                                Image(imgList[task.image].name)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 50, height: 50)
-                                    .shadow(color: .black, radius: 1)
-                                    .padding(10)
-                                    .foregroundColor(.black)
-                                
+                                    .frame(width: 100, height: 100)
+                                    .cornerRadius(20)
+                                    .shadow(color: .black, radius: 5)
+                                    
+                            
+                                Spacer()
                                 
                                 VStack (alignment: .leading) {
                                     Text(task.name)
@@ -54,10 +59,12 @@ struct ContentView: View {
                                     Text(catList[task.category].name)
                                     
                                     
-                                }.foregroundColor(.black)
+                                }.foregroundColor(.accentColorText)
+                                
+                                Spacer()
                                     
-                            }
-                        }.background(Color.white)
+                            }.padding()
+                        }.background(Color.accentColor)
                             .cornerRadius(20)
                         
                         
@@ -74,7 +81,6 @@ struct ContentView: View {
                 }
 
                 
-                //btts
                 
                     HStack {
                         
@@ -94,7 +100,7 @@ struct ContentView: View {
                         Spacer()
 
                         Button {
-                            
+                            showAboutUS.toggle()
                         }label: {
                             Image(systemName: "info.circle")
                                 .resizable()
@@ -126,15 +132,33 @@ struct ContentView: View {
                         }
                         
                         Spacer()
+                        
+                        Button {
+                            isDarkMode.toggle()
+                        }label: {
+                            Image(systemName: "lightbulb.circle")
+                                .resizable()
+                                .frame(width: 40,height: 40)
+                                .foregroundColor(.accent)
+                                .fontWeight(.bold)
+                                
+                        }
+                        
+                        Spacer()
                         Spacer()
                     }.padding(.top,20)
 
                 
                 
             }
-        }.preferredColorScheme(.dark)
+            
+            
+        }.preferredColorScheme(isDarkMode ? .dark : .light)
             .sheet(isPresented: $addClicked){
-                addTaskView(catList: $catList, imgList: $imgList, taskList: $taskList, addClicked: $addClicked)
+                addTaskView(catList: $catList, imgList: $imgList, taskList: $taskList, addClicked: $addClicked, isDarkMode: $isDarkMode)
+            }
+            .fullScreenCover(isPresented: $showAboutUS) {
+                AppInfo(showAboutUS: $showAboutUS, isDarkMode: $isDarkMode)
             }
     }
 }
