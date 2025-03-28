@@ -1,46 +1,46 @@
 [
     {
         "id": 0,
-        "name": "select"
+        "name": "Selecionar"
     },
     {
         "id": 1,
-        "name": "img-1"
+        "name": "Saltar"
     },
     {
         "id": 2,
-        "name": "img-2"
+        "name": "Peso"
     },
     {
         "id": 3,
-        "name": "img-3"
+        "name": "Alongar"
     },
     {
         "id": 4,
-        "name": "img-4"
+        "name": "Yoga"
     },
     {
         "id": 5,
-        "name": "img-5"
+        "name": "Prancha"
     },
     {
         "id": 6,
-        "name": "img-6"
+        "name": "Agachamento"
     },
     {
         "id": 7,
-        "name": "img-7"
+        "name": "Pilates"
     },
     {
         "id": 8,
-        "name": "img-8"
+        "name": "Core"
     },
     {
         "id": 9,
-        "name": "img-9"
+        "name": "Esporte"
     },
     {
         "id": 10,
-        "name": "img-10"
+        "name": "Casa"
     }
 ]

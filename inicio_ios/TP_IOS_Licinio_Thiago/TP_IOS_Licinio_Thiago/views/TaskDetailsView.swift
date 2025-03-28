@@ -103,8 +103,10 @@ struct TaskDetailsView: View {
                 TextEditor(text: $description)
                     .padding()
                     .foregroundColor(.gray)
-                    .border(Color.gray, width: 1)
+                    .border(Color.accent, width: 1)
                     .frame(height: 200)
+                    
+                    
                 
             }.padding()
             

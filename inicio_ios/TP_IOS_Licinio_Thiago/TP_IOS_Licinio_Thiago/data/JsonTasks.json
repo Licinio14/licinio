@@ -1,59 +1,80 @@
 [
-	{
-		"id": 0,
-		"name": "Tarefa 1",
-        "description": "Acabar o trabalho de IOS",
-        "category": 1,
-		"image": 1
-	},
     {
         "id": 1,
-        "name": "Tarefa 2",
-        "description": "Fazer um novo site em laravel",
-        "category": 1,
-        "image": 1
-    },
-    {
-        "id": 2,
-        "name": "Tarefa 3",
-        "description": "Desenhar o logo",
-        "category": 5,
-        "image": 2
-    },
-    {
-        "id": 3,
-        "name": "Tarefa 4",
-        "description": "Testar os programas",
-        "category": 4,
-        "image": 3
-    },
-    {
-        "id": 4,
-        "name": "Tarefa 1",
-        "description": "Acabar o trabalho de IOS",
-        "category": 4,
-        "image": 1
-    },
-    {
-        "id": 5,
-        "name": "Tarefa 2",
-        "description": "Fazer um novo site em laravel",
+        "name": "Treino de Força",
+        "description": "Fazer treino de força para melhorar a musculatura.",
         "category": 2,
-        "image": 1
-    },
-    {
-        "id": 6,
-        "name": "Tarefa 3",
-        "description": "Desenhar o logo",
-        "category": 1,
         "image": 2
-    },
-    {
+      },
+      {
+        "id": 2,
+        "name": "Corrida de Resistência",
+        "description": "Fazer uma corrida longa para aumentar a resistência cardiovascular.",
+        "category": 8,
+        "image": 9
+      },
+      {
+        "id": 3,
+        "name": "Treino de Flexibilidade",
+        "description": "Realizar alongamentos para melhorar a flexibilidade.",
+        "category": 4,
+        "image": 4
+      },
+      {
+        "id": 4,
+        "name": "Treino HIIT",
+        "description": "Fazer um treino intervalado de alta intensidade.",
+        "category": 5,
+        "image": 5
+      },
+      {
+        "id": 5,
+        "name": "Treino de Agilidade",
+        "description": "Exercícios para melhorar a agilidade e coordenação.",
+        "category": 7,
+        "image": 7
+      },
+      {
+        "id": 6,
+        "name": "Pilates",
+        "description": "Praticar Pilates para melhorar postura e flexibilidade.",
+        "category": 7,
+        "image": 7
+      },
+      {
         "id": 7,
-        "name": "Tarefa 4",
-        "description": "Testar os programas",
-        "category": 3,
-        "image": 3
-    }
+        "name": "Treino de Core",
+        "description": "Fazer exercícios focados no fortalecimento do core.",
+        "category": 5,
+        "image": 5
+      },
+      {
+        "id": 8,
+        "name": "Caminhada ao Ar Livre",
+        "description": "Fazer uma caminhada em um ambiente natural.",
+        "category": 9,
+        "image": 9
+      },
+      {
+        "id": 9,
+        "name": "Treino de Cardio",
+        "description": "Exercícios aeróbicos para melhorar o condicionamento físico.",
+        "category": 1,
+        "image": 1
+      },
+      {
+        "id": 10,
+        "name": "Yoga para Iniciantes",
+        "description": "Fazer uma sessão de yoga para iniciantes.",
+        "category": 4,
+        "image": 4
+      },
+      {
+        "id": 11,
+        "name": "Treino de Velocidade",
+        "description": "Exercícios para aumentar a velocidade de corrida.",
+        "category": 9,
+        "image": 9
+      }
     
 ]

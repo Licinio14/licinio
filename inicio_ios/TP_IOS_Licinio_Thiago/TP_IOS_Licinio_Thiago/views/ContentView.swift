@@ -34,6 +34,29 @@ struct ContentView: View {
                 
                 //task list
                 NavigationStack {
+                    
+                    HStack {
+                        
+                    
+                        Image(systemName: "list.bullet.clipboard")
+                            .font(.title2)
+                            .bold()
+                        
+                        Spacer()
+                        
+                        Text("ToDo List")
+                            .font(.largeTitle)
+                            .bold()
+                        
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        
+                    }.padding(.horizontal,40)
+                    
+                    
+                    
                     List(taskList) { task in
                         
                         NavigationLink {
@@ -68,14 +91,6 @@ struct ContentView: View {
                             .cornerRadius(20)
                         
                         
-                    }.navigationTitle("ToDo List")
-                    .toolbar {
-                        // Adiciona o ícone na parte da direita da Navigation Bar
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Image(systemName: "list.bullet.clipboard")  // SF Symbol como ícone
-                                .foregroundColor(.white) // Altere a cor do ícone
-                                .padding()
-                        }
                     }
                         
                 }
