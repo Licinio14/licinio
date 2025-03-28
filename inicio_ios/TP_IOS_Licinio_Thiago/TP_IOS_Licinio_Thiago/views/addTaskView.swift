@@ -16,7 +16,7 @@ struct addTaskView: View {
     @Binding var isDarkMode: Bool
     
     @State var selectedCat: Int = 0
-    @State var selectedImg: Int = 3
+    @State var selectedImg: Int = 0
     
     @State private var showAlert = false
     
